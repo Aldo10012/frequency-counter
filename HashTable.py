@@ -13,7 +13,7 @@ class HashTable:
   # This method creates an array (list) of a given size and populates each of its elements with a LinkedList object.
 
   def create_arr(self, size):
-    arr = [LinkedList]*size
+    return [LinkedList]*size
     
 
 
@@ -52,3 +52,7 @@ class HashTable:
   def print_key_values(self):
     pass
 
+if __name__ == "__main__":
+    ht = HashTable(3)
+    # ht.create_arr()
+    print(ht.arr)

@@ -75,7 +75,8 @@ class HashTable:
   # erase: 2
 
   def print_key_values(self):
-    pass
+    for LinkedList in self.arr:
+      LinkedList.print_nodes()
 
 if __name__ == "__main__":
     ht = HashTable(8)

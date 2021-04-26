@@ -6,20 +6,9 @@ class HashTable:
     self.size = size
     self.arr = self.create_arr(size)
 
-
-  # 1️⃣ TODO: Complete the create_arr method.
-
-  # Each element of the hash table (arr) is a linked list.
-  # This method creates an array (list) of a given size and populates each of its elements with a LinkedList object.
   def create_arr(self, size):
-    return [LinkedList()]*size
-    
+    return [LinkedList()]*size    
 
-  # 2️⃣ TODO: Create your own hash function.
-  """
-  Hash functions are a function that turns each of these keys into an index value that we can use to 
-  decide where in our list each key:value pair should be stored. 
-  """
   def hash_func(self, key):
     return hash(key) % self.size
     
@@ -32,31 +21,32 @@ class HashTable:
   hash table, be sure to check if there is a Node with the same key in the table already.
   """
   def insert(self, key, value):
-    # get hash value of key, then modulate it to get index. then set hash_key_index to it
-    hash_key_index = self.hash_func(key)
-    print("this key goes in index ", hash_key_index)
+    # get hash value of key, then modulate it to get index. then set i (index) to it
+    i = self.hash_func(key)
+    print("this key goes in index ", i)
 
-    # current refers to the linkedList inside that array index
-    current = self.arr[hash_key_index]
-    print(current.head)
 
     # look at the current linked list to see if it already has that key in ther
-    # if found, increase the value by 1
-    # if not found, append key
     data = [key, value]
-    if current.find(data) == -1: # not found
+    
+    if self.arr[i].find(data) == -1: # not found, append key
       print("not found")
-      current.append(data)   
-      print('key:', current.head.data[0])
-      print('value:', current.head.data[1])  
+      self.arr[i].append(data)   
+      print('key:', self.arr[i].head.data[0])
+      print('value:', self.arr[i].head.data[1])  
 
-    else:                       # found
+    else:                       # found, increase the value by 1
+
+      # store the value currently in this position
+      # then delete node <--- need a helper function??
+      # then create a node with (key, value) + new value stored
+      # then append data
       print("found")
-      current.head.data[1] += 1  
-      print('key:', current.head.data[0])
-      print('value:', current.head.data[1]) 
+      self.arr[i].head.data[1] += 1  
+      print('key:', self.arr[i].head.data[0])
+      print('value:', self.arr[i].head.data[1]) 
 
-
+    print(self.arr[i].head)
     # print(self.arr)
     return 
     
@@ -81,7 +71,7 @@ class HashTable:
 if __name__ == "__main__":
     ht = HashTable(8)
     # print(ht.hash_func("key"))
-    ht.insert("apple", 1)
+    ht.insert("banana", 1)
     print("")
     ht.insert("apple", 1)
     print("")

@@ -21,7 +21,7 @@ class LinkedList:
 
     while current != None and not found:
 
-      if current.data == item:
+      if current.data[0] == item:
         found = True
       else:
         current = current.next
@@ -35,7 +35,7 @@ class LinkedList:
 
 
   def length(self):
-    if self.head == None:
+    if self.head[0] == None:
       return 0
     else:
       counter = 1

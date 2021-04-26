@@ -6,8 +6,8 @@ class LinkedList:
     self.head = None
 
 
-  def append(self, new_data):
-    new_node = Node(new_data)
+  def append(self, new_key, new_value):
+    new_node = Node(new_key, new_value)
     new_node.next = self.head
     self.head = new_node
 
@@ -21,7 +21,7 @@ class LinkedList:
 
     while current != None and not found:
 
-      if current.data[0] == item:
+      if current.key == item:
         found = True
       else:
         current = current.next
@@ -53,5 +53,5 @@ class LinkedList:
       print('The linked list is empty.')
     else:
       for i in range(self.length()):
-        print(f'Node {i}: {current.data}')
+        print(f'Node {i}: {current.key}')
         current = current.next

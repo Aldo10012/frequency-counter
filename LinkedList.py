@@ -35,7 +35,7 @@ class LinkedList:
 
 
   def length(self):
-    if self.head[0] == None:
+    if self.head == None:
       return 0
     else:
       counter = 1

@@ -21,21 +21,22 @@ class HashTable:
   hash table, be sure to check if there is a Node with the same key in the table already.
   """
   def insert(self, key, value):
-    # get hash value of key, then modulate it to get index. then set i (index) to it
+    # i refers to the hash-index, or which index to look at in self.arr
     i = self.hash_func(key)
     print("this key goes in index ", i)
 
+    # store key and value
+    data = (key, value)
 
     # look at the current linked list to see if it already has that key in ther
-    data = [key, value]
-    
-    if self.arr[i].find(data) == -1: # not found, append key
+
+    if self.arr[i].find(data) == -1:                    # not found, append key
       print("not found")
       self.arr[i].append(data)   
       print('key:', self.arr[i].head.data[0])
       print('value:', self.arr[i].head.data[1])  
 
-    else:                       # found, increase the value by 1
+    else:                                               # found, increase the value by 1
 
       # store the value currently in this position
       # then delete node <--- need a helper function??
@@ -43,8 +44,8 @@ class HashTable:
       # then append data
       print("found")
       self.arr[i].head.data[1] += 1  
-      print('key:', self.arr[i].head.data[0])
-      print('value:', self.arr[i].head.data[1]) 
+      print('key:', self.arr[i].head.data[0])    # changing value of head, may not be changing correct node
+      print('value:', self.arr[i].head.data[1])  # changing value of head, may not be changing correct node
 
     print(self.arr[i].head)
     # print(self.arr)

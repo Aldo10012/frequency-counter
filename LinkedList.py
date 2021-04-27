@@ -53,5 +53,5 @@ class LinkedList:
       print('The linked list is empty.')
     else:
       for i in range(self.length()):
-        print(f'Node {i}: {current.key}')
+        print(f'Node {i}: {current.key}: {current.value}')
         current = current.next

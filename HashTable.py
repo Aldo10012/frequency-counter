@@ -25,22 +25,18 @@ class HashTable:
     i = self.hash_func(key)
     print("this key goes in index ", i)
 
-
     # look at the current linked list to see if it already has that key in ther
 
     if self.arr[i].find(key) == -1:            # not found, append key
       print("not found")
       self.arr[i].append(key, value)   
-      print('key:', self.arr[i].head.key)
-      print('value:', self.arr[i].head.value)  
 
     else:                                      # found, increase the value by 1
-
       print("found")
-      self.arr[i].head.value += 1  
-      print('key:', self.arr[i].head.key)       # changing value of head, may not be changing correct node
-      print('value:', self.arr[i].head.value)   # changing value of head, may not be changing correct node
+      self.arr[i].head.value += 1               # changing value of head, may not be changing correct node
+  
 
+    print(self.arr[i].head.key, self.arr[i].head.value)
     print(self.arr[i].head)
     # print(self.arr)
     return 
@@ -75,6 +71,9 @@ if __name__ == "__main__":
     ht.insert("banana", 1)
     print("")
     ht.insert("apple", 1)
+
+    # print("\nPrint Nodes:")
+    # ht.print_key_values()
 
 
     # words = ""

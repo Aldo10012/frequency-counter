@@ -7,7 +7,11 @@ class HashTable:
     self.arr = self.create_arr(size)
 
   def create_arr(self, size):
-    return [LinkedList()]*size    
+    # return [LinkedList()]*size 
+    arr = []
+    for i in range(size):
+      arr.append(LinkedList())
+    return arr
 
   def hash_func(self, key):
     return hash(key) % self.size
@@ -33,11 +37,11 @@ class HashTable:
 
     else:                                      # found, increase the value by 1
       print("found")
-      self.arr[i].head.value += 1               # changing value of head, may not be changing correct node
-  
+      self.arr[i].edit(key)
 
-    print(self.arr[i].head.key, self.arr[i].head.value)
-    print(self.arr[i].head)
+
+
+
     # print(self.arr)
     return 
     
@@ -56,15 +60,19 @@ class HashTable:
   # erase: 2
 
   def print_key_values(self):
-    for LinkedList in self.arr:
-      LinkedList.print_nodes()
+    counter = 0
+    for ll in self.arr:
+      # print(counter)
+      counter += 1
+      ll.print_nodes()
 
 if __name__ == "__main__":
     ht = HashTable(8)
-    # print(ht.hash_func("key"))
+    # ht.print_key_values()
     ht.insert("banana", 1)
     print("")
     ht.insert("apple", 1)
+    # ht.print_key_values()
     print("")
     ht.insert("apple", 1)
     print("")
@@ -72,14 +80,15 @@ if __name__ == "__main__":
     print("")
     ht.insert("apple", 1)
 
-    # print("\nPrint Nodes:")
-    # ht.print_key_values()
+    print("\nPrint Nodes:")
+    ht.print_key_values()
 
 
     # words = ""
     # with open('example.txt') as f:
     #   words = f.read()
     # words = words.split()
+    # ht = HashTable(8)
     # for word in words:
     #   print(word)
-    #   # ht.insert(word, 1)
+      # ht.insert(word, 1)

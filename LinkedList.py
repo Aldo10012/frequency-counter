@@ -10,6 +10,7 @@ class LinkedList:
     new_node = Node(new_key, new_value)
     new_node.next = self.head
     self.head = new_node
+    print(self.head.key, self.head.value)
 
 
   def find(self,item):
@@ -32,6 +33,20 @@ class LinkedList:
     else:
       return -1
 
+  def edit(self, key):
+    current = self.head
+
+    while current != None:
+      if current.key == key:
+        current.increase_val()
+        print(current.key, current.value)
+        return 1
+      else:
+        current = current.next
+    
+    print("not found")
+    return -1
+    
 
 
   def length(self):
@@ -53,5 +68,5 @@ class LinkedList:
       print('The linked list is empty.')
     else:
       for i in range(self.length()):
-        print(f'Node {i}: {current.key}: {current.value}')
+        print(f'{current.key}: {current.value}')
         current = current.next
